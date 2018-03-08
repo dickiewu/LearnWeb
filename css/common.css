@@ -1,0 +1,9 @@
+p {
+    text-indent:20px;
+}
+
+#first_div {
+    border: 1px solid lightblue;
+    height: 400px;
+    width: 700px;
+}
