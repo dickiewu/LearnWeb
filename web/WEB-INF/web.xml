@@ -5,17 +5,16 @@
          version="4.0">
 
 
-    <!--<servlet-mapping>-->
-        <!--<servlet-name>firstServlet</servlet-name>-->
-        <!--<url-pattern>/firstServlet</url-pattern>-->
-    <!--</servlet-mapping>-->
-
-    <context-param>
-        <param-name>crab_key</param-name>
-        <param-value>fff112324544567</param-value>
-    </context-param>
 
 
+    <jsp-config>
+        <jsp-property-group>
+            <url-pattern>*.jsp</url-pattern>
+            <scripting-invalid>true</scripting-invalid>
+            <trim-directive-whitespaces>true</trim-directive-whitespaces>
+            <default-content-type>text/html</default-content-type>
+        </jsp-property-group>
+    </jsp-config>
     <display-name>learn web demo </display-name>
 
 </web-app>

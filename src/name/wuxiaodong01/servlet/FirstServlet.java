@@ -58,7 +58,8 @@ public class FirstServlet extends HttpServlet {
 
     private void processRequest(HttpServletRequest req, HttpServletResponse response) throws IOException, ServletException {
         //        traverseParameter(req);
-
+        String contextPath = getServletContext().getContextPath();
+        System.out.println("context path:"+contextPath);
         String characterEncoding = req.getCharacterEncoding();
         System.out.println("character encoding:"+characterEncoding);
         req.setCharacterEncoding("utf-8");
@@ -114,6 +115,8 @@ public class FirstServlet extends HttpServlet {
             System.out.println("commited:" + committed);
             resp.getOutputStream().write(bytes);
         }
+
+
     }
 
     @Override
