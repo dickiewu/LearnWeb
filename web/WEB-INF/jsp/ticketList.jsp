@@ -6,20 +6,22 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-  <%@ page import="name.wuxiaodong01.domain.Ticket" %>
-  <%@ page import="java.util.Map" %>
-  <%@ page import="java.util.Set" %>
+<%@ page import="name.wuxiaodong01.domain.Ticket" %>
+<%@ page import="java.util.Map" %>
+<%@ page import="java.util.Set" %>
 
-  <html>
+<%
+    Map<Integer,Ticket> ticketDb = (Map<Integer, Ticket>) request.getAttribute("ticketDb");
+%>
+<html>
 <head>
     <title>TicketList</title>
 </head>
 <body>
-    <%
-        Map<Integer,Ticket> ticketDb = (Map<Integer, Ticket>) request.getAttribute("ticketDb");
-    %>
 
-    <h1>Tickets</h1>
+
+    <h1>Tickets</h1><br/>
+    <a href="login?logout">Logout</a>
     <a href="/learnweb/ticketServlet?action=create">Create</a> <br/>
     <%
         if (ticketDb.isEmpty()) {

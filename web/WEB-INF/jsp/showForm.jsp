@@ -12,9 +12,9 @@
 </head>
 <body>
     <h1>Create a Ticket!!</h1>
+    <a href="login?logout">Logout</a>
     <form action="/learnweb/ticketServlet" method="post" enctype="multipart/form-data">
         <input type="hidden" name="action" value="create">
-        姓名: <input type="text" name="customerName"/> <br/><br/>
         主题: <input type="text" name="subject" /><br/><br/>
         内容:
         <textarea name="body" cols="30" rows="6" ></textarea><br/><br/>

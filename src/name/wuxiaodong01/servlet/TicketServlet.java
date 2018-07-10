@@ -1,19 +1,16 @@
 package name.wuxiaodong01.servlet;
 
-import com.google.common.base.Strings;
 import com.google.common.collect.Maps;
 import com.google.common.io.ByteStreams;
 import name.wuxiaodong01.domain.Attachment;
 import name.wuxiaodong01.domain.Ticket;
+import name.wuxiaodong01.utils.Strings;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.Part;
+import javax.servlet.http.*;
 import java.io.IOException;
 import java.net.URLEncoder;
 import java.util.Locale;
@@ -41,6 +38,11 @@ public class TicketServlet extends HttpServlet {
     }
 
     private void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+        if(!checkLogin(request)){
+            response.sendRedirect("login");
+            return;
+        }
         String action = request.getParameter("action");
         if (Strings.isNullOrEmpty(action)) {
             action = "list";
@@ -59,6 +61,13 @@ public class TicketServlet extends HttpServlet {
                 showTicketsLists(request, response);
                 break;
         }
+    }
+
+    private boolean checkLogin(HttpServletRequest request) {
+        HttpSession session = request.getSession();
+        String username = (String) session.getAttribute("username");
+        return !Strings.isNullOrEmpty(username);
+
     }
 
     private void processDownload(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -134,7 +143,8 @@ public class TicketServlet extends HttpServlet {
     private void doCreate(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
         req.setCharacterEncoding("UTF-8");
         Ticket ticket = new Ticket();
-        ticket.setCustomerName(req.getParameter("customerName"));
+        String username= (String) req.getSession().getAttribute("username");
+        ticket.setCustomerName(username);
         ticket.setBody(req.getParameter("body"));
         ticket.setSubject(req.getParameter("subject"));
 

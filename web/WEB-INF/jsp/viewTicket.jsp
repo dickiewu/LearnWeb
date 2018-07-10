@@ -18,6 +18,7 @@
         Ticket ticket = ((Ticket) request.getAttribute("ticket"));
         String ticketId = (String) request.getAttribute("ticketId");
     %>
+    <a href="login?logout">Logout</a>
     <h1>Ticket #<%= request.getAttribute("ticketId")%>:  <%= ticket.getSubject()%></h1><br/>
     Customer Name: <%=ticket.getCustomerName()%> <br/><br/>
     <%=ticket.getBody()%>
