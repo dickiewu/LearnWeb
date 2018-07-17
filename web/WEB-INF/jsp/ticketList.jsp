@@ -5,37 +5,35 @@
   Time: 上午11:53
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ page import="name.wuxiaodong01.domain.Ticket" %>
-<%@ page import="java.util.Map" %>
-<%@ page import="java.util.Set" %>
+<%--@elvariable id="ticketDb" type="java.util.Map<Integr,name.wuxiaodong01.domain.Ticket>"--%>
 
-<%
-    Map<Integer,Ticket> ticketDb = (Map<Integer, Ticket>) request.getAttribute("ticketDb");
-%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+
 <html>
 <head>
     <title>TicketList</title>
 </head>
-<body>
-
 
     <h1>Tickets</h1><br/>
     <a href="login?logout">Logout</a>
     <a href="/learnweb/ticketServlet?action=create">Create</a> <br/>
-    <%
-        if (ticketDb.isEmpty()) {
 
-        }else{
-            Set<Map.Entry<Integer, Ticket>> entries = ticketDb.entrySet();
-            for (Map.Entry<Integer, Ticket> entry : entries) {
-                int ticketId = entry.getKey();
-                Ticket ticket = entry.getValue();
-    %>
-                Tickets #<%=ticketId%>: <a href="/learnweb/ticketServlet?action=view&ticketId=<%=ticketId%>"><%=ticket.getSubject()%></a>(customer:<%=ticket.getCustomerName()%>)
-    <%
-            }
-        }
-    %>
+    <c:choose>
+        <c:when test="${empty ticketDb}">
+            NO TICKET!!!!!!
+        </c:when>
+        <c:otherwise>
+            <c:forEach items="${ticketDb}" var="entry">
+                <c:url value="ticketServlet" var="viewUrl">
+                    <c:param name="action">view</c:param>
+                    <c:param name="ticketId">${entry.key}</c:param>
+                </c:url>
+
+                Tickets #${entry.key}: <a href="${viewUrl}">${entry.value.subject}</a>(customer:${entry.value.customerName})
+            </c:forEach>
+        </c:otherwise>
+    </c:choose>
+    <c:remove var="viewUrl" scope="page"/>
+    <br/>${viewUrl}
 </body>
 </html>
