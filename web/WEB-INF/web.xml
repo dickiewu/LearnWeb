@@ -5,6 +5,16 @@
          version="4.0">
 
 
+
+    <listener>
+        <listener-class>name.wuxiaodong01.listener.ContextListener</listener-class>
+    </listener>
+
+    <listener>
+        <listener-class>name.wuxiaodong01.listener.RequestListener</listener-class>
+    </listener>
+
+
     <jsp-config>
         <jsp-property-group>
             <url-pattern>*.jsp</url-pattern>
@@ -20,10 +30,7 @@
     <session-config>
         <session-timeout>30</session-timeout>
         <cookie-config>
-            <name>WSESSIONID</name>
-            <comment>fuck</comment>
             <http-only>true</http-only>
-            <max-age>600</max-age>
         </cookie-config>
         <tracking-mode>COOKIE</tracking-mode>
     </session-config>

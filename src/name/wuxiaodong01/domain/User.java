@@ -1,9 +1,15 @@
 package name.wuxiaodong01.domain;
 
+import javax.servlet.http.HttpSessionActivationListener;
+import javax.servlet.http.HttpSessionBindingEvent;
+import javax.servlet.http.HttpSessionBindingListener;
+import javax.servlet.http.HttpSessionEvent;
+import java.io.Serializable;
 import java.util.Hashtable;
+import java.util.Locale;
 import java.util.Map;
 
-public class User {
+public class User implements Serializable,HttpSessionBindingListener,HttpSessionActivationListener {
     private long userId;
 
     private String username;
@@ -68,5 +74,28 @@ public class User {
     @Override
     public String toString() {
         return this.username + ": " + this.lastName + ", " + this.firstName;
+    }
+
+    @Override
+    public void valueBound(HttpSessionBindingEvent event) {
+        System.out.println(String.format(Locale.ENGLISH, "bound to session,name:%s,value:%s", event.getName(),event.getValue()));
+
+    }
+
+    @Override
+    public void valueUnbound(HttpSessionBindingEvent event) {
+        System.out.println(String.format(Locale.ENGLISH, "unbound to session,name:%s,value:%s", event.getName(),event.getValue()));
+
+    }
+
+    @Override
+    public void sessionWillPassivate(HttpSessionEvent se) {
+        System.out.println(String.format(Locale.ENGLISH, "passive User,session:%s",se.getSession()));
+
+    }
+
+    @Override
+    public void sessionDidActivate(HttpSessionEvent se) {
+        System.out.println(String.format(Locale.ENGLISH, "active User,session:%s",se.getSession()));
     }
 }

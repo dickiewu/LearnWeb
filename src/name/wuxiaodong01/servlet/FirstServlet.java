@@ -41,7 +41,7 @@ public class FirstServlet extends HttpServlet {
 
     private void processRequest(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         String el = request.getParameter("el");
-        if(Strings.isEmpty(el)){ //
+        if(Strings.isEmpty(el)){
             User user = new User(19384, "Coder314", "&John", "<>Smith");
             Hashtable<String, Boolean> permissions = new Hashtable<>();
             permissions.put("user",true);
