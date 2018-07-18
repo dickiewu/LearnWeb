@@ -32,8 +32,6 @@ public class CookieAndSessionServlet extends HttpServlet {
         }else if(Objects.equals(action,"passive")){
             HttpSession session = request.getSession();
             System.out.println(String.format(Locale.ENGLISH, "session is New:%b",session.isNew()));
-            User user = new User(2L, "wxido", "tom", "tim");
-            session.setAttribute("rootUser",user);
             session.setAttribute("name","wuxiaodong");
         }else if(Objects.equals(action,"active")){
             HttpSession session = request.getSession();

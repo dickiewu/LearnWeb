@@ -6,6 +6,80 @@
 
 
 
+
+    <!--配置filter-->
+
+
+
+    <filter>
+        <filter-name>AutoLoginFilter</filter-name>
+        <filter-class>name.wuxiaodong01.filter.AutoLoginFilter</filter-class>
+    </filter>
+
+    <filter-mapping>
+        <filter-name>AutoLoginFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+
+    <filter>
+        <filter-name>AuthenticationFilter</filter-name>
+        <filter-class>name.wuxiaodong01.filter.AuthenticationFilter</filter-class>
+    </filter>
+
+    <filter-mapping>
+        <filter-name>AuthenticationFilter</filter-name>
+        <url-pattern>/ticketServlet</url-pattern>
+    </filter-mapping>
+
+    <filter>
+        <filter-name>AFilter</filter-name>
+        <filter-class>name.wuxiaodong01.filter.AFilter</filter-class>
+    </filter>
+
+
+    <filter-mapping>
+        <filter-name>AFilter</filter-name>
+        <servlet-name>firstServlet</servlet-name>
+    </filter-mapping>
+
+
+
+    <filter>
+        <filter-name>CFilter</filter-name>
+        <filter-class>name.wuxiaodong01.filter.CFilter</filter-class>
+    </filter>
+
+    <filter-mapping>
+        <filter-name>CFilter</filter-name>
+        <url-pattern>/system/bin</url-pattern>
+    </filter-mapping>
+
+
+    <filter>
+        <filter-name>BFilter</filter-name>
+        <filter-class>name.wuxiaodong01.filter.BFilter</filter-class>
+    </filter>
+
+
+    <filter-mapping>
+        <filter-name>BFilter</filter-name>
+        <url-pattern>/system/*</url-pattern>
+    </filter-mapping>
+
+
+    <filter>
+        <filter-name>loginFilter</filter-name>
+        <filter-class>name.wuxiaodong01.filter.LoginFilter</filter-class>
+    </filter>
+
+    <filter-mapping>
+        <filter-name>loginFilter</filter-name>
+        <url-pattern>/login</url-pattern>
+    </filter-mapping>
+
+
+
+
     <listener>
         <listener-class>name.wuxiaodong01.listener.ContextListener</listener-class>
     </listener>

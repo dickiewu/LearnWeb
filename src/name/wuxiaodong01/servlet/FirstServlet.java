@@ -1,7 +1,6 @@
 package name.wuxiaodong01.servlet;
 
 import com.google.common.io.Files;
-import name.wuxiaodong01.domain.User;
 import name.wuxiaodong01.utils.Strings;
 
 import javax.servlet.ServletContext;
@@ -15,10 +14,9 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.File;
 import java.io.IOException;
 import java.net.URLEncoder;
-import java.util.Hashtable;
 import java.util.Objects;
 
-@WebServlet(name = "firstServlet", urlPatterns = {"/firstServlet", "/system/bin/*"})
+@WebServlet(name = "firstServlet", urlPatterns = {"/firstServlet", "/system/bin"})
 public class FirstServlet extends HttpServlet {
     @Override
     public void init() throws ServletException {
@@ -42,13 +40,6 @@ public class FirstServlet extends HttpServlet {
     private void processRequest(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         String el = request.getParameter("el");
         if(Strings.isEmpty(el)){
-            User user = new User(19384, "Coder314", "&John", "<>Smith");
-            Hashtable<String, Boolean> permissions = new Hashtable<>();
-            permissions.put("user",true);
-            permissions.put("moderator",true);
-            permissions.put("admin",false);
-            user.setPermissions(permissions);
-            request.getSession().setAttribute("user",user);
             request.getRequestDispatcher("el.jsp").forward(request,response);
         }
     }

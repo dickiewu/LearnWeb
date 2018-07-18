@@ -39,10 +39,6 @@ public class TicketServlet extends HttpServlet {
 
     private void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        if(!checkLogin(request)){
-            response.sendRedirect("login");
-            return;
-        }
         String action = request.getParameter("action");
         if (Strings.isNullOrEmpty(action)) {
             action = "list";
@@ -63,12 +59,6 @@ public class TicketServlet extends HttpServlet {
         }
     }
 
-    private boolean checkLogin(HttpServletRequest request) {
-        HttpSession session = request.getSession();
-        String username = (String) session.getAttribute("username");
-        return !Strings.isNullOrEmpty(username);
-
-    }
 
     private void processDownload(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String ticketId = request.getParameter("ticketId");

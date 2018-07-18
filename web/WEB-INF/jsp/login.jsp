@@ -24,6 +24,7 @@
     <form action="login" method="post" enctype="application/x-www-form-urlencoded">
         username: <input type="text" name="username"><br/>
         password: <input type="password" name="password" /><br>
+        autologin: <input type="checkbox" name="autologin" value="autologin"><br/>
         <input type="submit" value="Log in" />
     </form>
 </body>

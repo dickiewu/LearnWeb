@@ -12,11 +12,15 @@ public class ContextListener implements ServletContextListener,ServletContextAtt
         ServletContext servletContext = sce.getServletContext();
         servletContext.setAttribute("loadTime",System.currentTimeMillis());
         servletContext.setAttribute("loadTime","hello owrld");
-        onApplicationCreate();
+        onApplicationCreate(sce.getServletContext());
 
     }
 
-    private void onApplicationCreate() {
+    private void onApplicationCreate(ServletContext servletContext) {
+        //注册filter
+        /*FilterRegistration.Dynamic dynamic = servletContext.addFilter("DFilter", new DFilter());
+        dynamic.addMappingForUrlPatterns(EnumSet.of(DispatcherType.FORWARD),true,"/*");
+        dynamic.addMappingForServletNames(EnumSet.of(DispatcherType.REQUEST),true,"firstServlet");*/
 
     }
 

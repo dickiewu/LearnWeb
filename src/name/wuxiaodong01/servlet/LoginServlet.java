@@ -5,10 +5,7 @@ import name.wuxiaodong01.utils.Strings;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
+import javax.servlet.http.*;
 import java.io.IOException;
 import java.util.Map;
 import java.util.Objects;
@@ -22,12 +19,14 @@ public class LoginServlet extends HttpServlet {
         userDatabase.put("jerry","tom");
         userDatabase.put("sila","tom");
         userDatabase.put("maria","tom");
-
     }
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         //表单提交
         String username = request.getParameter("username");
         String password = request.getParameter("password");
+        String autologin = request.getParameter("autologin");   // 有check的话，　autologin 不为空
+
+
 
         //直接取数据库, 不用判断
         String passwordStored = userDatabase.get(username);
@@ -45,6 +44,11 @@ public class LoginServlet extends HttpServlet {
         HttpSession session = request.getSession();
         session.setAttribute("username",username);
         request.changeSessionId();
+        Cookie cookie = new Cookie("user",username);
+        cookie.setMaxAge(3600); // 1h
+        cookie.setHttpOnly(true);
+        cookie.setPath("/");
+        response.addCookie(cookie);
         response.sendRedirect("ticketServlet");
     }
 
