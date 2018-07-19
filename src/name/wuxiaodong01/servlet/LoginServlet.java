@@ -24,8 +24,6 @@ public class LoginServlet extends HttpServlet {
         //表单提交
         String username = request.getParameter("username");
         String password = request.getParameter("password");
-        String autologin = request.getParameter("autologin");   // 有check的话，　autologin 不为空
-
 
 
         //直接取数据库, 不用判断
@@ -49,7 +47,7 @@ public class LoginServlet extends HttpServlet {
         cookie.setHttpOnly(true);
         cookie.setPath("/");
         response.addCookie(cookie);
-        response.sendRedirect("ticketServlet");
+        response.sendRedirect("tickets");
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -66,7 +64,7 @@ public class LoginServlet extends HttpServlet {
             request.getRequestDispatcher("/WEB-INF/jsp/login.jsp").forward(request, response);
             return;
         }else{
-            response.sendRedirect("ticketServlet");
+            response.sendRedirect("tickets");
         }
 
 

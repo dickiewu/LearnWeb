@@ -7,6 +7,18 @@
 
 
 
+
+    <filter>
+        <filter-name>AuthenticationFilter</filter-name>
+        <filter-class>name.wuxiaodong01.filter.AuthenticationFilter</filter-class>
+    </filter>
+
+    <filter-mapping>
+        <filter-name>AuthenticationFilter</filter-name>
+        <url-pattern>/tickets</url-pattern>
+        <url-pattern>/sessions</url-pattern>
+    </filter-mapping>
+
     <jsp-config>
         <jsp-property-group>
             <url-pattern>*.jsp</url-pattern>

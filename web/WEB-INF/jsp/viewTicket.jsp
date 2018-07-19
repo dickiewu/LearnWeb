@@ -21,7 +21,7 @@
     Attachments:
 
     <c:forEach items="${ticket.attachments}" var="attachment">
-        <c:url var="downloadUrl" value="ticketServlet">
+        <c:url var="downloadUrl" value="tickets">
             <c:param name="action">download</c:param>
             <c:param name="ticketId">${ticketId}</c:param>
             <c:param name="attachment">${attachment.name}</c:param>

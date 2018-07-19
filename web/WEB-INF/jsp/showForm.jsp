@@ -13,7 +13,7 @@
 <body>
     <h1>Create a Ticket!!</h1>
     <a href="login?logout">Logout</a>
-    <form action="/learnweb/ticketServlet" method="post" enctype="multipart/form-data">
+    <form action="/learnweb/tickets" method="post" enctype="multipart/form-data">
         <input type="hidden" name="action" value="create">
         主题: <input type="text" name="subject" /><br/><br/>
         内容:

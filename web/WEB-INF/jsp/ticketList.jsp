@@ -16,7 +16,7 @@
 
     <h1>Tickets</h1><br/>
     <a href="login?logout">Logout</a>
-    <a href="/learnweb/ticketServlet?action=create">Create</a> <br/>
+    <a href="/learnweb/tickets?action=create">Create</a> <br/>
 
     <c:choose>
         <c:when test="${empty ticketDb}">
@@ -24,7 +24,7 @@
         </c:when>
         <c:otherwise>
             <c:forEach items="${ticketDb}" var="entry">
-                <c:url value="ticketServlet" var="viewUrl">
+                <c:url value="tickets" var="viewUrl">
                     <c:param name="action">view</c:param>
                     <c:param name="ticketId">${entry.key}</c:param>
                 </c:url>

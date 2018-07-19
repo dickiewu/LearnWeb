@@ -18,7 +18,7 @@ import java.util.Map;
 
 @WebServlet(
         name = "ticketServlet",
-        urlPatterns = {"/ticketServlet"}
+        urlPatterns = {"/tickets"}
 )
 
 @MultipartConfig(
@@ -146,7 +146,7 @@ public class TicketServlet extends HttpServlet {
             ticketDatabase.put(id++, ticket);
         }
 
-        String redirectPath = String.format(Locale.ENGLISH, "%s%s%s", getServletContext().getContextPath(), "/ticketServlet", "?action=list");
+        String redirectPath = String.format(Locale.ENGLISH, "%s%s%s", getServletContext().getContextPath(), "/tickets", "?action=list");
         resp.sendRedirect(redirectPath);
     }
 
