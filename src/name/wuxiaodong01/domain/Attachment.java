@@ -8,7 +8,11 @@ public class Attachment
 
     private byte[] contents;
 
-    public String getName()
+    public void sayHello(){
+        
+    }
+
+    public String getTrueName()
     {
         return name;
     }
